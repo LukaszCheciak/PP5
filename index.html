@@ -13,16 +13,22 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
+    <script src="script.js"></script>
     <h1>SUPER KANTOR KANTOREX OTWARTY 24/7</h1>
-    <form action="">
-      <label>Nazwa użytkownika: </label>
-      <input /><br />
+    <form id="sprzedazWalutyFormularz">
+      <label for="nazwa">Nazwa użytkownika: </label>
+      <input type="text" id="nazwa" name="Nazwa użytkownika" required /><br />
 
-      <label>Nr konta: </label>
-      <input /><br />
+      <label for="nrKonta">Nr konta: </label>
+      <input type="nrKonta" id="nrKonta" name="nrKonta" required /><br />
 
-      <label>Nazwa sprzedawanej waluty: </label>
-      <select>
+      <label for="nazwaSprzedawanejWaluty">Nazwa sprzedawanej waluty: </label>
+      <select
+        type="number"
+        id="nazwaSprzedawanejWaluty"
+        name="nazwaSprzedawanejWaluty"
+        required
+      >
         <option value="PLN">PLN</option>
         <option value="Euro">Euro</option>
         <option value="Funt">Funt</option>
@@ -30,26 +36,37 @@
       </select>
       <br />
 
-      <label>Ilość sprzedawanej waluty: </label>
-      <input /><br />
+      <label for=" IloscSprzedanejWaluty">Ilość sprzedawanej waluty: </label>
+      <input
+        type="number"
+        id="IloscSprzedanejWaluty"
+        name="nazwaSprzedawanejWaluty"
+      /><br />
 
-      <label>Nazwa kupowanej waluty: </label>
-      <select>
+      <label for="nazwaKupowanejWaluty">Nazwa kupowanej waluty: </label>
+      <select
+        type="number"
+        id="nazwaKupowanejWaluty"
+        name="nazwaKupowanejWaluty"
+      >
         <option value="PLN">PLN</option>
         <option value="Euro">Euro</option>
         <option value="Funt">Funt</option>
         <option value="Frank">Frank</option></select
       ><br />
 
-      <label
-        >Zaakceptuj politykę serwisu:
-        <input type="radio" name="acceptService" value="Yes" /></label
-      ><br />
-      <button type="sumbit">Zatwierdz</button>
+      <label>Zaakceptuj politykę serwisu:</label>
+      <input
+        type="radio"
+        id="akceptacjaPolitykiSerwisu"
+        name="akceptacjaPolitykiSerwisu"
+        value="Yes"
+      /><br />
+      <button type="sumbit" onclick="zapiszDane()">Zatwierdz</button>
     </form>
 
-    <form>
-      <label>Wybierz walutę:</label>
+    <form id="sprawdzKurs">
+      <label for="wybierzWalute">Wybierz walutę:</label>
       <select>
         <option value="PLN">PLN</option>
         <option value="Euro">Euro</option>
