@@ -1,4 +1,4 @@
-function zapiszDane(form) {
+function saveDataFirstForm(form) {
   const nazwa = form.nazwa.value;
   const nrKonta = form.nrKonta.value;
   const nazwaSprzedanejWaluty = form.nazwaSprzedawanejWaluty.value;
@@ -6,7 +6,10 @@ function zapiszDane(form) {
   const nazwaKupowanejWaluty = form.nazwaKupowanejWaluty.value;
   const akceptacjaPolitykiSerwisu = form.akceptacjaPolitykiSerwisu.checked;
 
-  if (nazwaSprzedanejWaluty === nazwaKupowanejWaluty) {
+  if (
+    nazwaSprzedanejWaluty === nazwaKupowanejWaluty ||
+    akceptacjaPolitykiSerwisu === false
+  ) {
     form.reset();
     return;
   }
@@ -25,7 +28,47 @@ function zapiszDane(form) {
   calculate(daneObiekt).then((pr) => console.log(pr));
 
   form.reset();
+  return;
 }
+
+const rateChangeResultContainer = document.getElementById("rate_change_result");
+
+async function saveDataSecondForm(form) {
+  const checkboxEUR = form.EURsecondForm;
+  const checkboxCHF = form.GBPsecondForm;
+  const checkboxGBP = form.CHFsecondForm;
+
+  const currencies = [
+    {
+      code: "EUR",
+      selected: checkboxEUR.checked,
+    },
+    {
+      code: "CHF",
+      selected: checkboxCHF.checked,
+    },
+    {
+      code: "GBP",
+      selected: checkboxGBP.checked,
+    },
+  ];
+
+  rateChangeResultContainer.innerHTML = "";
+
+  currencies.forEach(async (currency) => {
+    if (currency.selected) {
+      const rate = await fetchCurrencyRate(currency.code);
+      rateChangeResultContainer.insertAdjacentHTML(
+        "beforeend",
+        generateCurrencyRateResult(currency.code, rate)
+      );
+    }
+  });
+  form2.reset();
+}
+
+const generateCurrencyRateResult = (currency, rate) =>
+  `<p>${currency} exchange rate to PLN: ${rate}</p>`;
 
 const handleCalculation = async (daneObiekt) => {
   const IloscKupowanejWaluty = await calculate(daneObiekt);
@@ -87,8 +130,14 @@ const fetchCurrencyRate = async (currency) => {
 };
 
 const form = document.getElementById("sprzedazWalutyFormularz");
+const form2 = document.getElementById("sprawdzKurs");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  zapiszDane(e.target);
+  saveDataFirstForm(e.target);
+});
+
+form2.addEventListener("submit", (e) => {
+  e.preventDefault();
+  saveDataSecondForm(e.target);
 });
