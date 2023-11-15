@@ -68,7 +68,8 @@ async function saveDataSecondForm(form) {
 }
 
 const generateCurrencyRateResult = (currency, rate) =>
-  `<p>${currency} exchange rate to PLN: ${rate}</p>`;
+  `<h2>Exchange rate #${generateRandomNumber(10000)} </h2>
+  <p>${currency} exchange rate to PLN: ${rate}</p>`;
 
 const handleCalculation = async (daneObiekt) => {
   const IloscKupowanejWaluty = await calculate(daneObiekt);
@@ -141,3 +142,9 @@ form2.addEventListener("submit", (e) => {
   e.preventDefault();
   saveDataSecondForm(e.target);
 });
+
+function showMessage() {
+  const text = document.getElementById("message");
+  console.log(text);
+  text.classList.remove("hidden");
+}
