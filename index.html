@@ -76,45 +76,86 @@
     </main>
 
     <form id="sellCurrencyForm" class="form1">
-      <label for="names">Nazwa użytkownika: </label>
-      <input type="text" id="names" name="names" required /><br />
-
-      <label for="accountNumber">Nr konta: </label>
-      <input
-        type="number"
-        id="accountNumber"
-        name="accountNumber"
-        required
-      /><br />
-
-      <label for="SellCurrencyName">Nazwa sprzedawanej waluty: </label>
-      <select
-        type="text"
-        id="SellCurrencyName"
-        name="SellCurrencyName"
-        required
-      >
-        <option value="PLN">PLN</option>
-        <option value="EUR">Euro</option>
-        <option value="GBP">Funt</option>
-        <option value="CHF">Frank</option>
-      </select>
-      <br />
-
-      <label for=" SellCurrencyAmount">Ilość sprzedawanej waluty: </label>
-      <input
-        type="number"
-        id="SellCurrencyAmount"
-        name="SellCurrencyAmount"
-      /><br />
-
-      <label for="BuyCurrencyName">Nazwa kupowanej waluty: </label>
-      <select type="number" id="BuyCurrencyName" name="BuyCurrencyName">
-        <option value="PLN">PLN</option>
-        <option value="EUR">Euro</option>
-        <option value="GBP">Funt</option>
-        <option value="CHF">Frank</option></select
-      ><br />
+      <div class="form1Back">
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <input
+                type="text"
+                id="names"
+                name="names"
+                class="form-control"
+                required
+              />
+              <label class="form-label" for="names">Nazwa użytkownika</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <input
+                type="number"
+                id="accountNumber"
+                name="accountNumber"
+                class="form-control"
+                required
+              />
+              <label class="form-label" for="accountNumber">Numer konta</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <select
+                type="text"
+                id="SellCurrencyName"
+                name="SellCurrencyName"
+                class="form-control"
+                required
+              >
+                <option value="PLN">PLN</option>
+                <option value="EUR">Euro</option>
+                <option value="GBP">Funt</option>
+                <option value="CHF">Frank</option>
+              </select>
+              <label class="form-label" for="SellCurrencyName"
+                >Nazwa sprzedawanej waluty:</label
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <input
+                type="number"
+                id="SellCurrencyAmount"
+                name="SellCurrencyAmount"
+                class="form-control"
+              />
+              <label class="form-label" for=" SellCurrencyAmount"
+                >Ilość sprzedawanej waluty:</label
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <select
+                type="number"
+                id="BuyCurrencyName"
+                name="BuyCurrencyName"
+                class="form-control"
+              >
+                <option value="PLN">PLN</option>
+                <option value="EUR">Euro</option>
+                <option value="GBP">Funt</option>
+                <option value="CHF">Frank</option>
+              </select>
+              <label class="form-label" for="BuyCurrencyName"
+                >Nazwa kupowanej waluty:
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <label>Zaakceptuj politykę serwisu:</label>
       <input
@@ -122,9 +163,12 @@
         id="policyAcceptance"
         name="policyAcceptance"
         value="Yes"
+        class="form-check-input"
       /><br />
-      <button type="submit">Zatwierdz</button>
+      <button type="submit" class="btn btn-primary">Zatwierdz</button>
     </form>
+
+    <div id="exchange__result" class="exchange__result"></div>
 
     <form id="CheckRate" class="form2">
       <label for="CheckCurrency"> Wybierz walutę:</label><br />
@@ -167,7 +211,6 @@
       <p class="hiddenSmall">Adress: ul. Bogata 2/3 31-053 Kraków</p>
     </div>
 
-    <div id="exchange__result" class="exchange__result"></div>
     <div id="rate_change_result" class="rate_change_result"></div>
 
     <div>
@@ -214,26 +257,6 @@
                 </p>
               </div>
             </div>
-          </section>
-          <section class="text-center mb-5">
-            <a href="" class="text-white me-4">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="text-white me-4">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="text-white me-4">
-              <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="text-white me-4">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="text-white me-4">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="text-white me-4">
-              <i class="fab fa-github"></i>
-            </a>
           </section>
         </div>
         <div
