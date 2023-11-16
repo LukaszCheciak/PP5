@@ -32,11 +32,11 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="#"
-                >Home <span class="sr-only">(current)</span></a
-              >
+                >Menu Główne<span class="sr-only"></span
+              ></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Linki</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Profile</a>
@@ -169,29 +169,36 @@
     </form>
 
     <div id="exchange__result" class="exchange__result"></div>
+    <br />
 
     <form id="CheckRate" class="form2">
-      <label for="CheckCurrency"> Wybierz walutę:</label><br />
+      <label for="CheckCurrency" class="mb-3"> Wybierz walutę:</label><br />
       <input
         type="checkbox"
         id="EURsecondForm"
         name="EURsecondForm"
         value="EUR"
+        class="form-check-input"
       />Euro<br />
       <input
         type="checkbox"
         id="GBPsecondForm"
         name="GBPsecondForm"
         value="GBP"
+        class="form-check-input"
       />Funt<br />
       <input
         type="checkbox"
         id="CHFsecondForm"
         name="CHFsecondForm"
         value="CHF"
+        class="form-check-input"
       />Frank<br />
-      <button type="submit">Sprawdz obecny kurs</button>
+      <button type="submit" class="btn btn-primary">Sprawdz obecny kurs</button>
     </form>
+    <br />
+
+    <div id="rate_change_result" class="rate_change_result"></div>
 
     <form id="ShowContactData" class="form3">
       <label>Kliknij by wyświetlić Dane do kontaktu: </label>
@@ -200,6 +207,7 @@
         id="CheckEmail"
         name="CheckEmail"
         value="Yes"
+        class="form-check-input"
         onclick="showMessage()"
       />
     </form>
@@ -211,8 +219,6 @@
       <p class="hiddenSmall">Adress: ul. Bogata 2/3 31-053 Kraków</p>
     </div>
 
-    <div id="rate_change_result" class="rate_change_result"></div>
-
     <div>
       <footer class="text-center text-white" style="background-color: #3f51b5">
         <div class="container">
@@ -220,28 +226,28 @@
             <div class="row text-center d-flex justify-content-center pt-5">
               <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
-                  <a href="#!" class="text-white">About us</a>
+                  <a href="#!" class="text-white">O nas</a>
                 </h6>
               </div>
 
               <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
-                  <a href="#!" class="text-white">Products</a>
+                  <a href="#!" class="text-white">Historia</a>
                 </h6>
               </div>
               <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
-                  <a href="#!" class="text-white">Awards</a>
+                  <a href="#!" class="text-white">Nagrody</a>
                 </h6>
               </div>
               <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
-                  <a href="#!" class="text-white">Help</a>
+                  <a href="#!" class="text-white">Pomoc</a>
                 </h6>
               </div>
               <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
-                  <a href="#!" class="text-white">Contact</a>
+                  <a href="#!" class="text-white">Kontakt</a>
                 </h6>
               </div>
             </div>
