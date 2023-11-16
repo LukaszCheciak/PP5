@@ -65,8 +65,8 @@ async function saveDataSecondForm(form) {
 }
 
 const generateCurrencyRateResult = (currency, rate) =>
-  `<h2>Exchange rate #${generateRandomNumber(10000)} </h2>
-  <p>${currency} exchange rate to PLN: ${rate}</p>`;
+  `<h2>Kurs waluty #${generateRandomNumber(10000)} </h2>
+  <p>${currency} Kurs na złoty polski: ${rate}</p>`;
 
 const handleCalculation = async (dataObject) => {
   const BuyCurrencyAmount = await calculate(dataObject);
@@ -81,11 +81,11 @@ const handleCalculation = async (dataObject) => {
 
 const generateExchangeResult = (dane) => {
   return `
-  <h2>Exchange result #${generateRandomNumber(10000)} </h2>
-  <p>Selling currency: ${dane.SellCurrencyName}</p>
-  <p>Selling value: ${dane.SellCurrencyAmount}</p>
-  <p>Buying currency: ${dane.BuyCurrencyName}</p>
-  <p>Buying value: ${dane.BuyCurrencyAmount.toFixed(2)}</p>
+  <h2>Wymiana walut #${generateRandomNumber(10000)} </h2>
+  <p>Waluta sprzedaż: ${dane.SellCurrencyName}</p>
+  <p>Ilość sprzedanej waluty: ${dane.SellCurrencyAmount}</p>
+  <p>Waluta kupno: ${dane.BuyCurrencyName}</p>
+  <p>Ilość kupionej waluty: ${dane.BuyCurrencyAmount.toFixed(2)}</p>
   
   `;
 };
