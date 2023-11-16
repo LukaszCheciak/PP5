@@ -14,20 +14,84 @@
     <script type="text/javascript" src="./script.js" defer></script>
   </head>
   <body>
-    <h1>SUPER KANTOR KANTOREX OTWARTY 24/7</h1>
+    <header>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
+        <a class="navbar-brand" href="#"><strong>Kantorex</strong></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-    <form id="sprzedazWalutyFormularz">
-      <label for="nazwa">Nazwa użytkownika: </label>
-      <input type="text" id="nazwa" name="nazwa" required /><br />
+      <div class="view intro-2">
+        <div class="full-bg-img">
+          <div class="mask rgba-black-light flex-center">
+            <div class="container text-center white-text">
+              <div class="white-text text-center wow fadeInUp">
+                <h1 class="topName">Kantorex, otwarty 24/7</h1>
+                <h5>
+                  Wymieniaj waluty, sprawdzaj kursy kiedy i gdzie tylko chcesz
+                </h5>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="text-center py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              Poniżej masz dostępne formularze, w pierwszym możesz dokonać
+              wymiany walut, w następnym sprawdzisz aktualne kursy dostępnych
+              walut a w ostatnim możesz sprawdzić nasze dane kontaktowe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
 
-      <label for="nrKonta">Nr konta: </label>
-      <input type="number" id="nrKonta" name="nrKonta" required /><br />
+    <form id="sellCurrencyForm" class="form1">
+      <label for="names">Nazwa użytkownika: </label>
+      <input type="text" id="names" name="names" required /><br />
 
-      <label for="nazwaSprzedawanejWaluty">Nazwa sprzedawanej waluty: </label>
+      <label for="accountNumber">Nr konta: </label>
+      <input
+        type="number"
+        id="accountNumber"
+        name="accountNumber"
+        required
+      /><br />
+
+      <label for="SellCurrencyName">Nazwa sprzedawanej waluty: </label>
       <select
         type="text"
-        id="nazwaSprzedawanejWaluty"
-        name="nazwaSprzedawanejWaluty"
+        id="SellCurrencyName"
+        name="SellCurrencyName"
         required
       >
         <option value="PLN">PLN</option>
@@ -37,19 +101,15 @@
       </select>
       <br />
 
-      <label for=" IloscSprzedanejWaluty">Ilość sprzedawanej waluty: </label>
+      <label for=" SellCurrencyAmount">Ilość sprzedawanej waluty: </label>
       <input
         type="number"
-        id="IloscSprzedanejWaluty"
-        name="iloscSprzedawanejWaluty"
+        id="SellCurrencyAmount"
+        name="SellCurrencyAmount"
       /><br />
 
-      <label for="nazwaKupowanejWaluty">Nazwa kupowanej waluty: </label>
-      <select
-        type="number"
-        id="nazwaKupowanejWaluty"
-        name="nazwaKupowanejWaluty"
-      >
+      <label for="BuyCurrencyName">Nazwa kupowanej waluty: </label>
+      <select type="number" id="BuyCurrencyName" name="BuyCurrencyName">
         <option value="PLN">PLN</option>
         <option value="EUR">Euro</option>
         <option value="GBP">Funt</option>
@@ -59,15 +119,15 @@
       <label>Zaakceptuj politykę serwisu:</label>
       <input
         type="radio"
-        id="akceptacjaPolitykiSerwisu"
-        name="akceptacjaPolitykiSerwisu"
+        id="policyAcceptance"
+        name="policyAcceptance"
         value="Yes"
       /><br />
       <button type="submit">Zatwierdz</button>
     </form>
 
-    <form id="sprawdzKurs">
-      <label for="wybierzWalute"> Wybierz walutę:</label><br />
+    <form id="CheckRate" class="form2">
+      <label for="CheckCurrency"> Wybierz walutę:</label><br />
       <input
         type="checkbox"
         id="EURsecondForm"
@@ -89,7 +149,7 @@
       <button type="submit">Sprawdz obecny kurs</button>
     </form>
 
-    <form id="ShowContactData">
+    <form id="ShowContactData" class="form3">
       <label>Kliknij by wyświetlić Dane do kontaktu: </label>
       <input
         type="radio"
@@ -99,16 +159,93 @@
         onclick="showMessage()"
       />
     </form>
-
-    <div id="exchange__result"></div>
-    <div id="rate_change_result"></div>
-
     <div id="message" class="hidden">
       <br />
 
-      <p>Adress Email: example@mail.com</p>
-      <p>Numer Telefonu: +48 111 222 333</p>
-      <p>Adress: ul. Bogata 2/3 31-053 Kraków</p>
+      <p class="hiddenSmall">Adress Email: example@mail.com</p>
+      <p class="hiddenSmall">Numer Telefonu: +48 111 222 333</p>
+      <p class="hiddenSmall">Adress: ul. Bogata 2/3 31-053 Kraków</p>
+    </div>
+
+    <div id="exchange__result" class="exchange__result"></div>
+    <div id="rate_change_result" class="rate_change_result"></div>
+
+    <div>
+      <footer class="text-center text-white" style="background-color: #3f51b5">
+        <div class="container">
+          <section class="mt-5">
+            <div class="row text-center d-flex justify-content-center pt-5">
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a href="#!" class="text-white">About us</a>
+                </h6>
+              </div>
+
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a href="#!" class="text-white">Products</a>
+                </h6>
+              </div>
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a href="#!" class="text-white">Awards</a>
+                </h6>
+              </div>
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a href="#!" class="text-white">Help</a>
+                </h6>
+              </div>
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a href="#!" class="text-white">Contact</a>
+                </h6>
+              </div>
+            </div>
+          </section>
+
+          <hr class="my-5" />
+          <section class="mb-5">
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-8">
+                <p>
+                  Wszelkie prawa zastrzeżone, niniejsza strona jest własnością
+                  firmy Kantorex sp.z.o.o
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="text-center mb-5">
+            <a href="" class="text-white me-4">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-github"></i>
+            </a>
+          </section>
+        </div>
+        <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)"
+        >
+          © 2023 Copyright:
+          <a class="text-white" href="https://github.com/LukaszCheciak/PP5"
+            >Autor</a
+          >
+        </div>
+      </footer>
     </div>
 
     <script

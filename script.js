@@ -1,31 +1,28 @@
 function saveDataFirstForm(form) {
-  const nazwa = form.nazwa.value;
-  const nrKonta = form.nrKonta.value;
-  const nazwaSprzedanejWaluty = form.nazwaSprzedawanejWaluty.value;
-  const IloscSprzedanejWaluty = form.iloscSprzedawanejWaluty.value;
-  const nazwaKupowanejWaluty = form.nazwaKupowanejWaluty.value;
-  const akceptacjaPolitykiSerwisu = form.akceptacjaPolitykiSerwisu.checked;
+  const names = form.names.value;
+  const accountNumber = form.accountNumber.value;
+  const SellCurrencyName = form.SellCurrencyName.value;
+  const SellCurrencyAmount = form.SellCurrencyAmount.value;
+  const BuyCurrencyName = form.BuyCurrencyName.value;
+  const policyAcceptance = form.policyAcceptance.checked;
 
-  if (
-    nazwaSprzedanejWaluty === nazwaKupowanejWaluty ||
-    akceptacjaPolitykiSerwisu === false
-  ) {
+  if (SellCurrencyName === BuyCurrencyName || policyAcceptance === false) {
     form.reset();
     return;
   }
 
-  const daneObiekt = {
-    nazwa: nazwa,
-    nrKonta: nrKonta,
-    nazwaSprzedanejWaluty: nazwaSprzedanejWaluty,
-    IloscSprzedanejWaluty: IloscSprzedanejWaluty,
-    nazwaKupowanejWaluty: nazwaKupowanejWaluty,
-    akceptacjaPolitykiSerwisu: akceptacjaPolitykiSerwisu,
+  const dataObject = {
+    names: names,
+    accountNumber: accountNumber,
+    SellCurrencyName: SellCurrencyName,
+    SellCurrencyAmount: SellCurrencyAmount,
+    BuyCurrencyName: BuyCurrencyName,
+    policyAcceptance: policyAcceptance,
   };
 
-  handleCalculation(daneObiekt);
+  handleCalculation(dataObject);
 
-  calculate(daneObiekt).then((pr) => console.log(pr));
+  calculate(dataObject).then((pr) => console.log(pr));
 
   form.reset();
   return;
@@ -71,24 +68,24 @@ const generateCurrencyRateResult = (currency, rate) =>
   `<h2>Exchange rate #${generateRandomNumber(10000)} </h2>
   <p>${currency} exchange rate to PLN: ${rate}</p>`;
 
-const handleCalculation = async (daneObiekt) => {
-  const IloscKupowanejWaluty = await calculate(daneObiekt);
+const handleCalculation = async (dataObject) => {
+  const BuyCurrencyAmount = await calculate(dataObject);
 
   document
     .getElementById("exchange__result")
     .insertAdjacentHTML(
       "beforeend",
-      generateExchangeResult({ ...daneObiekt, IloscKupowanejWaluty })
+      generateExchangeResult({ ...dataObject, BuyCurrencyAmount })
     );
 };
 
 const generateExchangeResult = (dane) => {
   return `
   <h2>Exchange result #${generateRandomNumber(10000)} </h2>
-  <p>Selling currency: ${dane.nazwaSprzedanejWaluty}</p>
-  <p>Selling value: ${dane.IloscSprzedanejWaluty}</p>
-  <p>Buying currency: ${dane.nazwaKupowanejWaluty}</p>
-  <p>Buying value: ${dane.IloscKupowanejWaluty.toFixed(2)}</p>
+  <p>Selling currency: ${dane.SellCurrencyName}</p>
+  <p>Selling value: ${dane.SellCurrencyAmount}</p>
+  <p>Buying currency: ${dane.BuyCurrencyName}</p>
+  <p>Buying value: ${dane.BuyCurrencyAmount.toFixed(2)}</p>
   
   `;
 };
@@ -97,28 +94,20 @@ const generateRandomNumber = (limit) => {
   return Math.floor(Math.random() * limit) + 1;
 };
 const calculate = async (formData) => {
-  if (formData.nazwaSprzedanejWaluty === "PLN") {
-    const buyCurrencyRate = await fetchCurrencyRate(
-      formData.nazwaKupowanejWaluty
-    );
-    return formData.IloscSprzedanejWaluty / buyCurrencyRate;
+  if (formData.SellCurrencyName === "PLN") {
+    const buyCurrencyRate = await fetchCurrencyRate(formData.BuyCurrencyName);
+    return formData.SellCurrencyAmount / buyCurrencyRate;
   }
 
-  if (formData.nazwaKupowanejWaluty === "PLN") {
-    const sellCurrencyRate = await fetchCurrencyRate(
-      formData.nazwaSprzedanejWaluty
-    );
-    return formData.IloscSprzedanejWaluty * sellCurrencyRate;
+  if (formData.BuyCurrencyName === "PLN") {
+    const sellCurrencyRate = await fetchCurrencyRate(formData.SellCurrencyName);
+    return formData.SellCurrencyAmount * sellCurrencyRate;
   }
 
-  const sellCurrencyRate = await fetchCurrencyRate(
-    formData.nazwaSprzedanejWaluty
-  );
-  const buyCurrencyRate = await fetchCurrencyRate(
-    formData.nazwaKupowanejWaluty
-  );
+  const sellCurrencyRate = await fetchCurrencyRate(formData.SellCurrencyName);
+  const buyCurrencyRate = await fetchCurrencyRate(formData.BuyCurrencyName);
 
-  return (sellCurrencyRate / buyCurrencyRate) * formData.IloscSprzedanejWaluty;
+  return (sellCurrencyRate / buyCurrencyRate) * formData.SellCurrencyAmount;
 };
 
 const fetchCurrencyRate = async (currency) => {
@@ -130,8 +119,8 @@ const fetchCurrencyRate = async (currency) => {
   return data.rates[0].mid;
 };
 
-const form = document.getElementById("sprzedazWalutyFormularz");
-const form2 = document.getElementById("sprawdzKurs");
+const form = document.getElementById("sellCurrencyForm");
+const form2 = document.getElementById("CheckRate");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
